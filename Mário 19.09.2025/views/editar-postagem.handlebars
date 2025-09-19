@@ -1,0 +1,25 @@
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4>Editar Postagem</h4>
+            </div>
+            <div class="card-body">
+                <form action="/postagens/editar/{{postagem.id}}" method="POST">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" 
+                               value="{{postagem.titulo}}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="conteudo" class="form-label">Conteúdo</label>
+                        <textarea class="form-control" id="conteudo" name="conteudo" 
+                                  rows="6" required>{{postagem.conteudo}}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    <a href="/postagens" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

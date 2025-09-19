@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-12">
+        <h2>Postagens</h2>
+        <hr>
+        
+        {{#if postagens.length}}
+            {{#each postagens}}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.titulo}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Por {{this.nome_autor}} em {{formatDate this.criado_em}}
+                    </h6>
+                    <p class="card-text">{{this.conteudo}}</p>
+                    
+                    {{#if this.ehDono}}
+                    <div class="mt-3">
+                        <a href="/postagens/editar/{{this.id}}" class="btn btn-sm btn-warning">Editar</a>
+                        <form action="/postagens/excluir/{{this.id}}" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-danger" 
+                                    onclick="return confirm('Tem certeza que deseja excluir esta postagem?')">
+                                Excluir
+                            </button>
+                        </form>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}}
+        {{else}}
+            <div class="alert alert-info">
+                Nenhuma postagem encontrada. 
+                {{#if usuario}}
+                    <a href="/postagens/nova">Crie a primeira postagem!</a>
+                {{else}}
+                    <a href="/login">Faça login para criar uma postagem!</a>
+                {{/if}}
+            </div>
+        {{/if}}
+    </div>
+</div>
